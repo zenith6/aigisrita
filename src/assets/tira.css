@@ -1,0 +1,37 @@
+body {
+  overflow-x: hidden;
+}
+
+.rita {
+  display: none;
+  position: fixed;
+  width: 160px;
+  height: 160px;
+  -webkit-animation-timing-function: linear;
+  pointer-events: none; /* pass through mouse events to underlying elements */
+}
+
+.rita[data-dir="0"] {
+  -webkit-animation-name: rita-left;
+  transform: scaleX(-1);
+}
+
+.rita[data-dir="1"] {
+  -webkit-animation-name: rita-right;
+}
+
+@-webkit-keyframes rita-left {
+  0% { right: -160px; }
+  20% { right: 0; }
+  70% { right: 0; }
+  90% { right: -160px; }
+  100% { right: -160px; }
+}
+
+@-webkit-keyframes rita-right {
+  0% { left: -160px; }
+  20% { left: 0; }
+  70% { left: 0; }
+  90% { left: -160px; }
+  100% { left: -160px; }
+}
