@@ -1,32 +1,65 @@
 (function () {
   'use strict';
 
-  var duration = 10000;
-
-  var images = [
-    'assets/rita.png',
-    'assets/mikoto.png'
-  ];
+  var interval = 15000;
+  var totalRarity = 0;
+  var images = null;
 
   var $window = $(window);
 
-  var $container = $(document.body);
+  var $container = $('<div class="rita" data-dir="0" />')
+    .appendTo($(document.body));
 
-  var $img = $('<img class="rita" data-dir="0" />')
+  var $img = $('<img />')
     .appendTo($container);
 
-  $img.css('-webkit-animation-duration', '' + duration + 'ms');
-
   function fadein() {
-    var image = images[Math.random() > 0.97 ? 1 : 0];
-    $img.attr('src', chrome.extension.getURL(image));
+    var lot = Math.random() * totalRarity;
+    var image = images.reduce(function (elected, image) {
+      return elected || image.rarity < lot ? elected : image;
+    }, null);
 
-    var dir = 1 - $img.attr('data-dir');
-    var top = ($window.height() - $img.height()) * Math.random();
-    $img.css({top: top + 'px'})
-      .attr('data-dir', dir).show();
+    $img.attr({
+      src: chrome.extension.getURL(image.path),
+      width: image.width,
+      height: image.height
+    });
+
+    var dir = 1 - parseInt($container.attr('data-dir'));
+    var cw = $container.width(), ch = $container.height();
+    var ww = $window.width(), wh = $window.height();
+    var sl = dir ? 0 - cw : ww;
+    var st = (wh - ch) * Math.random();
+    var el = dir ? 0 : ww - cw;
+    var et = st;
+    var transform = dir || !image.flip ? '' : 'scaleX(-1)';
+
+    $container.attr({
+      'data-dir': dir
+    }).css({
+      left: sl + 'px',
+      top: st + 'px',
+      transform: transform
+    })
+    .animate({left: el + 'px', top: et + 'px'}, {duration: 4000})
+    .delay(3000)
+    .animate({left: sl + 'px', top: st + 'px'}, {duration: 4000});
   }
 
-  fadein();
-  setInterval(fadein, duration);
+  function start() {
+    fadein();
+    $container.show();
+
+    setInterval(fadein, interval);
+  }
+
+  $.getJSON(chrome.extension.getURL('assets/images.json'), {}, function (json) {
+    images = json.map(function (image) {
+      totalRarity += image.rarity;
+      image.rarity = totalRarity;
+      return image;
+    });
+
+    start();
+  });
 })();

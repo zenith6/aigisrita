@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "漆黒の射手リタさんがチラチラ見てくる",
-  "short_name": "rita",
-  "description": "千年戦争アイギスの漆黒の射手リタさんがチラチラ見てきます。",
+  "short_name": "aigisrita",
+  "description": "千年戦争アイギスの漆黒の射手リタさんがチラチラ見てきます。99%邪魔用です。",
 
   "version": "1.0.0",
 
@@ -33,6 +33,7 @@
   ],
 
   "web_accessible_resources": [
-    "assets/*.png"
+    "assets/*.png",
+    "assets/*.json"
   ]
 }
