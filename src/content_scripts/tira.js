@@ -5,12 +5,10 @@
   var totalRarity = 0;
   var images = null;
 
-  var $window = $(window);
-
-  var $container = $('<div class="rita" data-dir="0" />')
+  var $container = $('<div class="rita-container" />')
     .appendTo($(document.body));
 
-  var $img = $('<img />')
+  var $img = $('<img class="rita" data-dir="0" />')
     .appendTo($container);
 
   function fadein() {
@@ -25,16 +23,16 @@
       height: image.height
     });
 
-    var dir = 1 - parseInt($container.attr('data-dir'));
+    var dir = 1 - parseInt($img.attr('data-dir'));
     var cw = $container.width(), ch = $container.height();
-    var ww = $window.width(), wh = $window.height();
-    var sl = dir ? 0 - cw : ww;
-    var st = (wh - ch) * Math.random();
-    var el = dir ? 0 : ww - cw;
+    var iw = $img.width(), ih = $img.height();
+    var sl = dir ? 0 - iw : cw;
+    var st = (ch - ih) * Math.random();
+    var el = dir ? 0 : cw - iw;
     var et = st;
     var transform = dir || !image.flip ? '' : 'scaleX(-1)';
 
-    $container.attr({
+    $img.attr({
       'data-dir': dir
     }).css({
       left: sl + 'px',
@@ -48,8 +46,6 @@
 
   function start() {
     fadein();
-    $container.show();
-
     setInterval(fadein, interval);
   }
 
