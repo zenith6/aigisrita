@@ -3,19 +3,15 @@
   "name": "漆黒の射手リタさんがチラチラ見てくる",
   "short_name": "aigisrita",
   "description": "千年戦争アイギスの漆黒の射手リタさんがチラチラ見てきます。99%邪魔用です。",
-
-  "version": "1.2.0",
-
+  "version": "1.2.1",
   "icons": {
     "16": "assets/icon_16.png",
     "128": "assets/icon_128.png"
   },
-
   "permissions": [
     "http://*/*",
     "https://*/*"
   ],
-
   "content_scripts": [
     {
       "matches": [
@@ -31,7 +27,6 @@
       ]
     }
   ],
-
   "web_accessible_resources": [
     "assets/*.png",
     "assets/*.json"
