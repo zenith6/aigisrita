@@ -99,11 +99,44 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 });
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    switch (request.action) {
-      case 'ready':
+  switch (request.action) {
+    case 'ready':
+      var imageList = getImageList();
+      chrome.storage.local.get({away: false}, function (settings) {
+        var state = settings.away ? 'stop' : 'play';
         sendResponse({
-          imageList: getImageList(),
-          state: 'play'
+          imageList: imageList,
+          state: state
         });
+      });
+      return true;
+  }
+});
+
+chrome.storage.onChanged.addListener(function(changes, namespace) {
+  for (var key in changes) {
+    var change = changes[key];
+
+    switch (key) {
+      case 'awayInterval':
+        chrome.idle.setDetectionInterval(change.newValue);
+        break;
     }
+  }
+});
+
+chrome.idle.onStateChanged.addListener(function (newState) {
+  switch (newState) {
+    case 'active':
+      stop();
+      break;
+
+    case 'idle':
+      play();
+      break;
+  }
+});
+
+chrome.storage.local.get({awayInterval: 15}, function (settings) {
+  chrome.idle.setDetectionInterval(settings.awayInterval);
 });

@@ -57,13 +57,14 @@
   function stop() {
     if (timer) {
       clearInterval(timer);
+      timer = null;
       $img.stop(true);
       $container.hide();
     }
   }
 
-  chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-    switch (request.action) {
+  chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+    switch (message.action) {
       case 'play':
         play();
         break;

@@ -13,6 +13,7 @@
     "background",
     "storage",
     "tabs",
+    "idle",
     "http://*/*",
     "https://*/*"
   ],
