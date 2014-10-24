@@ -2,8 +2,8 @@
   'use strict';
 
   var interval = 15000;
-  var totalRarity = 0;
-  var images = null;
+  var images;
+  var totalRarity;
 
   var $container = $('<div class="rita-container" />')
     .appendTo($(document.body));
@@ -11,8 +11,8 @@
   var $img = $('<img class="rita" data-dir="0" />')
     .appendTo($container);
 
-  function fadein() {
-    var lot = Math.random() * totalRarity;
+  function animate() {
+    var lot = Math.random();
     var image = images.reduce(function (elected, image) {
       return elected || image.rarity < lot ? elected : image;
     }, null);
@@ -44,18 +44,45 @@
     .animate({left: sl + 'px', top: st + 'px'}, {duration: 4000});
   }
 
-  function start() {
-    fadein();
-    setInterval(fadein, interval);
+  var timer;
+
+  function play() {
+    if (!timer) {
+      timer = setInterval(animate, interval);
+      animate();
+      $container.show();
+    }
   }
 
-  $.getJSON(chrome.extension.getURL('assets/images.json'), {}, function (json) {
-    images = json.map(function (image) {
-      totalRarity += image.rarity;
-      image.rarity = totalRarity;
-      return image;
-    });
+  function stop() {
+    if (timer) {
+      clearInterval(timer);
+      $img.stop(true);
+      $container.hide();
+    }
+  }
 
-    start();
+  chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    switch (request.action) {
+      case 'play':
+        play();
+        break;
+
+      case 'stop':
+        stop();
+        break;
+    }
+  });
+
+  chrome.runtime.sendMessage({action: 'ready'}, function (response) {
+      images = response.imageList;
+
+      totalRarity = images.reduce(function (rarity, image) {
+        return rarity + image.rarity;
+      }, 0);
+
+      if (response.state == 'play') {
+        play();
+      }
   });
 })();
