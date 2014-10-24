@@ -23,12 +23,17 @@ $(function () {
   }, function (settings) {
     $('[name=active]').val([0 + settings.active]);
     $('[name=away]').prop('checked', settings.away);
-    $awayInterval.val(settings.awayInterval);
+
+    $awayInterval.val(settings.awayInterval)
+      .parent()
+      .toggle(settings.active);
   });
 
   $('[name=active]').change(function () {
     var active = !!parseInt(this.value);
     chrome.storage.local.set({active: active});
+
+    $awayInterval.parent().toggle(this.value);
   });
 
   $('[name=away]').change(function () {
