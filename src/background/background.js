@@ -126,15 +126,19 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
 });
 
 chrome.idle.onStateChanged.addListener(function (newState) {
-  switch (newState) {
-    case 'active':
-      stop();
-      break;
+  chrome.storage.local.get({away: false}, function (settings) {
+    if (settings.away) {
+      switch (newState) {
+        case 'active':
+          stop();
+          break;
 
-    case 'idle':
-      play();
-      break;
-  }
+        case 'idle':
+          play();
+          break;
+      }
+    }
+  });
 });
 
 chrome.storage.local.get({awayInterval: 15}, function (settings) {
