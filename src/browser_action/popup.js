@@ -2,6 +2,7 @@ $(function () {
   'use strict';
 
   var bg = chrome.extension.getBackgroundPage();
+  var settings = bg.settings;
 
   var $awayInterval = $('[name=awayInterval]');
   var intervals = [15, 30, 60, 180, 300, 600, 900, 1800, 3600];
@@ -16,18 +17,10 @@ $(function () {
     $('<option />').val(interval).text(label).appendTo($awayInterval);
   });
 
-  chrome.storage.local.get({
-    active: true,
-    away: false,
-    awayInterval: 15
-  }, function (settings) {
-    $('[name=active]').val([0 + settings.active]);
-    $('[name=away]').prop('checked', settings.away);
+  $('[name=active]').val([0 + settings.active]);
+  $('[name=away]').prop('checked', settings.away);
 
-    $awayInterval.val(settings.awayInterval)
-      .parent()
-      .toggle(settings.active);
-  });
+  $awayInterval.val(settings.awayInterval).parent().toggle(settings.active);
 
   $('[name=active]').change(function () {
     var active = !!parseInt(this.value);

@@ -32,22 +32,43 @@ function getWhiteList() {
 /**
  * @type Array
  */
-var imageListCache;
+var animations;
 
-function getImageList() {
-  if (!imageListCache) {
+function getAnimations() {
+  if (!animations) {
     var request = new XMLHttpRequest();
-    request.open('GET', chrome.extension.getURL('assets/images.json'), false);
+    request.open('GET', chrome.extension.getURL('content_scripts/animations.json'), false);
     request.send();
-    var rarity = 0;
-    imageListCache = JSON.parse(request.responseText).map(function (image) {
-      rarity += image.rarity;
-      image.rarity = rarity;
-      return image;
-    });
+
+    animations = JSON.parse(request.responseText);
+
+    var total = animations.reduce(function (rarity, animation) {
+      return rarity + animation.rarity;
+    }, 0);
+
+    animations.reduce(function (weight, animation) {
+      weight += animation.rarity / total;
+      animation.weight = weight;
+      return weight;
+    }, 0);
   }
 
-  return imageListCache;
+  return animations;
+}
+
+function getNextAnimation() {
+  var animations = getAnimations();
+  var threshold = Math.random();
+  var lot;
+
+  animations.some(function (animation) {
+    if (animation.weight > threshold) {
+      lot = animation;
+    }
+    return lot;
+  });
+
+  return lot;
 }
 
 function attach(tabId) {
@@ -56,9 +77,9 @@ function attach(tabId) {
     tabId: tabId
   });
 
-  chrome.tabs.executeScript(tabId, {file: 'vendor/jquery.js', runAt: 'document_start'});
-  chrome.tabs.executeScript(tabId, {file: 'background/tira.js', runAt: 'document_end'});
-  chrome.tabs.insertCSS(tabId, {file: 'background/tira.css', runAt: 'document_start'});
+  chrome.tabs.executeScript(tabId, {file: 'vendor/gsap/TweenMax.min.js', runAt: 'document_start'});
+  chrome.tabs.executeScript(tabId, {file: 'content_scripts/tira.js', runAt: 'document_end'});
+  chrome.tabs.insertCSS(tabId, {file: 'content_scripts/tira.css', runAt: 'document_start'});
 }
 
 function detach(tabId) {
@@ -84,63 +105,92 @@ function stop() {
   });
 }
 
-chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-  chrome.storage.local.get({active: true}, function (settings) {
-    if (changeInfo.status != 'loading') {
-      return;
-    }
+(function () {
+  'use strict';
 
-    if (settings.active && isApplicableTab(tab)) {
-      attach(tabId);
-    } else {
-      detach(tabId);
-    }
+  chrome.storage.local.get({
+    active: true,
+    away: false,
+    awayInterval: 15
+  }, function (settings) {
+    window.settings = settings;
+    initialize();
   });
-});
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  switch (request.action) {
-    case 'ready':
-      var imageList = getImageList();
-      chrome.storage.local.get({away: false}, function (settings) {
-        var state = settings.away ? 'stop' : 'play';
-        sendResponse({
-          imageList: imageList,
-          state: state
-        });
-      });
-      return true;
-  }
-});
+  function initialize() {
+    chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+      if (changeInfo.status != 'loading') {
+        return;
+      }
 
-chrome.storage.onChanged.addListener(function(changes, namespace) {
-  for (var key in changes) {
-    var change = changes[key];
+      if (window.settings.active && isApplicableTab(tab)) {
+        attach(tabId);
+      } else {
+        detach(tabId);
+      }
+    });
 
-    switch (key) {
-      case 'awayInterval':
-        chrome.idle.setDetectionInterval(change.newValue);
-        break;
-    }
-  }
-});
-
-chrome.idle.onStateChanged.addListener(function (newState) {
-  chrome.storage.local.get({away: false}, function (settings) {
-    if (settings.away) {
-      switch (newState) {
-        case 'active':
-          stop();
-          break;
-
-        case 'idle':
-          play();
+    chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+      switch (message.action) {
+        case 'onInitialized':
+        case 'onAnimationCompleted':
+          chrome.tabs.sendMessage(sender.tab.id, {
+            action: 'prepare',
+            animation: getNextAnimation()
+          }, function () {
+            if (!window.settings.away) {
+              chrome.tabs.sendMessage(sender.tab.id, {
+                action: 'play'
+              });
+            }
+          });
           break;
       }
-    }
-  });
-});
+    });
 
-chrome.storage.local.get({awayInterval: 15}, function (settings) {
-  chrome.idle.setDetectionInterval(settings.awayInterval);
-});
+    chrome.storage.onChanged.addListener(function(changes, namespace) {
+      for (var key in changes) {
+        var change = changes[key];
+        window.settings[key] = change.newValue;
+
+        switch (key) {
+          case 'away':
+            if (change.newValue) {
+              stop();
+            } else if (window.settings.active) {
+              play();
+            }
+            break;
+
+          case 'awayInterval':
+            chrome.idle.setDetectionInterval(change.newValue);
+            break;
+
+          case 'active':
+            if (change.newValue && !window.settings.away) {
+              play();
+            } else {
+              stop();
+            }
+            break;
+        }
+      }
+    });
+
+    chrome.idle.onStateChanged.addListener(function (newState) {
+      if (window.settings.away) {
+        switch (newState) {
+          case 'active':
+            stop();
+            break;
+
+          case 'idle':
+            play();
+            break;
+        }
+      }
+    });
+
+    chrome.idle.setDetectionInterval(window.settings.awayInterval);
+  }
+})();

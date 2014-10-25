@@ -1,0 +1,39 @@
+[
+  {
+    "name": "リタ左からチラ",
+    "sprites": {
+      "rita": {"path": "assets/rita.png", "zIndex": 10000}
+    },
+    "timesheet": [
+      ["rita", 0, {"left": 0, "top": "50%", "xPercent": -100, "yPercent": -50}],
+      ["rita", 6, {"xPercent": 0, "ease": "Quad.easeInOut"}],
+      ["rita", 6, {"xPercent": -100, "ease": "Quad.easeInOut", "delay": 4}]
+    ],
+    "rarity": 98
+  },
+  {
+    "name": "リタ右からチラ",
+    "sprites": {
+      "rita": {"path": "assets/rita.png", "zIndex": 10000}
+    },
+    "timesheet": [
+      ["rita", 0, {"right": 0, "top": "50%", "xPercent": 100, "yPercent": -50, "rotationY": 180}],
+      ["rita", 6, {"xPercent": 0, "ease": "Quad.easeInOut"}],
+      ["rita", 6, {"xPercent": 100, "ease": "Quad.easeInOut", "delay": 4}]
+    ],
+    "rarity": 98
+  },
+  {
+    "name": "ミコト成仏",
+    "sprites": {
+      "mikoto": {"path": "assets/mikoto.png", "zIndex": 10000}
+    },
+    "timesheet": [
+      ["mikoto", 0, {"width": "100%", "height": "100%", "left": "50%", "top": "70%", "xPercent": -50, "yPercent": -50, "opacity": 0}],
+      ["mikoto", 8, {"opacity": 0.8, "ease": "Quad.easeInOut"}],
+      ["mikoto", 4, {"opacity": 0, "ease": "Quad.easeInOut"}],
+      ["mikoto", 12, {"top": "30%", "ease": "Linear.easeInOut"}, "0"]
+    ],
+    "rarity": 4
+  }
+]

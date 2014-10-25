@@ -6,10 +6,17 @@ var pkg     = require('./package.json');
 var argv    = require('yargs').argv;
 
 gulp.task('scripts', function () {
-  return gulp.src([
-      'bower_components/jquery/dist/jquery.js'
+  var jquery = gulp.src([
+      'bower_components/jquery/dist/jquery.min.js'
     ])
-    .pipe(gulp.dest('src/vendor'));
+    .pipe(gulp.dest('src/vendor/jquery'));
+
+  var gsap = gulp.src([
+      'bower_components/gsap/src/minified/**/*.js'
+    ])
+    .pipe(gulp.dest('src/vendor/gsap'));
+
+  return merge(jquery, gsap);
 });
 
 gulp.task('package', ['validate-metadata'], function () {
