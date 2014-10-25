@@ -24,7 +24,7 @@
     "rarity": 98
   },
   {
-    "name": "ミコト成仏",
+    "name": "ミコトの霊",
     "sprites": {
       "mikoto": {"path": "assets/mikoto.png", "zIndex": 10000}
     },
@@ -33,6 +33,34 @@
       ["mikoto", 8, {"opacity": 0.8, "ease": "Quad.easeInOut"}],
       ["mikoto", 4, {"opacity": 0, "ease": "Quad.easeInOut"}],
       ["mikoto", 12, {"top": "30%", "ease": "Linear.easeInOut"}, "0"]
+    ],
+    "rarity": 4
+  },
+  {
+    "name": "モニカ右からちら",
+    "sprites": {
+      "monika": {"path": "assets/monika.png", "zIndex": 10000}
+    },
+    "timesheet": [
+      ["monika", 0, {"right": 0, "top": "50%", "xPercent": 100, "yPercent": -50}],
+      ["monika", 6, {"xPercent": 0, "ease": "Quad.easeInOut"}],
+      ["monika", 6, {"xPercent": 100, "ease": "Quad.easeInOut", "delay": 4}]
+    ],
+    "rarity": 4
+  },
+  {
+    "name": "シプリア合成",
+    "sprites": {
+      "cipria_base": {"path": "assets/cipria_base.png", "zIndex": 10000},
+      "cipria_sprit": {"path": "assets/cipria_sprit.png", "zIndex": 10001}
+    },
+    "timesheet": [
+      ["cipria_base", 0, {"left": "50%", "bottom": "5%", "xPercent": -50, "opacity": 0}],
+      ["cipria_sprit", 0, {"left": "50%", "bottom": "5%", "xPercent": -50, "opacity": 0}],
+      ["cipria_base", 1, {"opacity": 1}],
+      ["cipria_sprit", 0, {"opacity": 0.8}],
+      ["cipria_base", 6, {"opacity": 0, "ease": "Quad.easeIn"}],
+      ["cipria_sprit", 6, {"top": "-60%", "opacity": 0, "ease": "Quad.easeInOut"}, "-=6"]
     ],
     "rarity": 4
   }
