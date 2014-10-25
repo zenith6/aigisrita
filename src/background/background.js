@@ -43,6 +43,7 @@ function getAnimations() {
     animations = JSON.parse(request.responseText);
 
     var total = animations.reduce(function (rarity, animation) {
+      animation.rarity = (window.settings.averaging ? 1 : animation.rarity);
       return rarity + animation.rarity;
     }, 0);
 
@@ -111,7 +112,8 @@ function stop() {
   chrome.storage.local.get({
     active: true,
     away: false,
-    awayInterval: 15
+    awayInterval: 15,
+    averaging: false
   }, function (settings) {
     window.settings = settings;
     initialize();
@@ -172,6 +174,10 @@ function stop() {
             } else {
               stop();
             }
+            break;
+
+          case 'averaging':
+            animations = undefined;
             break;
         }
       }

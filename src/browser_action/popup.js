@@ -19,6 +19,7 @@ $(function () {
 
   $('[name=active]').val([0 + settings.active]);
   $('[name=away]').prop('checked', settings.away);
+  $('[name=averaging]').prop('checked', settings.averaging);
 
   $awayInterval.val(settings.awayInterval).parent().toggle(settings.active);
 
@@ -31,6 +32,10 @@ $(function () {
 
   $('[name=away]').change(function () {
     chrome.storage.local.set({away: this.checked});
+  });
+
+  $('[name=averaging]').change(function () {
+    chrome.storage.local.set({averaging: this.checked});
   });
 
   $awayInterval.change(function () {
