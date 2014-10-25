@@ -14,9 +14,12 @@
 ライセンス
 ========
 
-使用している画像の著作権は
-[千年戦争アイギス1292年目>>710](http://kilauea.bbspink.com/test/read.cgi/mobpink/1412817075/710)さんと
-[千年戦争アイギス622年目>>353](http://kilauea.bbspink.com/test/read.cgi/mobpink/1402073611/353)さんに帰属します。
+使用している画像の著作権は、PINKちゃんねるの千年戦争アイギススレで活動しているイラストレーターさんに帰属します。
+
+ * [千年戦争アイギス622年目>>353](http://kilauea.bbspink.com/test/read.cgi/mobpink/1402073611/353)さん
+ * [千年戦争アイギス710年目>>353](http://kilauea.bbspink.com/test/read.cgi/mobpink/1403135687/167)さん
+ * [千年戦争アイギス1292年目>>710](http://kilauea.bbspink.com/test/read.cgi/mobpink/1412817075/710)さん
+
 [千年戦争アイギス](http://www.dmm.com/netgame_s/aigisc/) は 株式会社DMM.comラボ の登録商標です。
 ソースコードのラインセンスは MIT License です。
 
