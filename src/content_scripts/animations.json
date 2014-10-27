@@ -115,5 +115,16 @@
       ["butterfly2", 0.5, {"opacity": 0}, "-=0.5"]
     ],
     "rarity": 4
+  },
+  {
+    "name": "シビラベンチフォーマー",
+    "sprites": {
+      "benchformer": {"path": "assets/benchformer.png", "zIndex": 10000}
+    },
+    "timesheet": [
+      ["benchformer", 0, {"right": "0", "top": "0", "xPercent": 100, "yPercent": -40}],
+      ["benchformer", 2.5, {"left": "0", "top": "100%", "xPercent": -100, "yPercent": -60, "ease": "Quad.easeInOut"}]
+    ],
+    "rarity": 4
   }
 ]
