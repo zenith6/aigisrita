@@ -83,7 +83,7 @@
       ["standup", 0, {"left": "50%", "bottom": "0", "xPercent": -50, "yPercent": 100}],
       ["shitdown", 0, {"left": "50%", "bottom": "0", "xPercent": -50, "yPercent": 0, "opacity": 0}],
       ["standup_sweat", 0, {"left": "50%", "bottom": "0", "xPercent": -50, "yPercent": 0, "opacity": 0}],
-      ["standup", 0.4, {"yPercent": 0}],
+      ["standup", 0.4, {"yPercent": 0, "ease": "Back.easeOut"}],
       ["standup_sweat", 0, {"opacity": 1}, "-=0.1"],
       ["standup_sweat", 0.6, {"xPercent": -40, "yPercent": -10, "opacity": 0, "scale": 1.5}, "-=0.1"],
       ["standup", 0.6, {"opacity": 0}, "+=2.5"],
