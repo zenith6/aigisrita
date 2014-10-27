@@ -91,5 +91,29 @@
       ["shitdown", 6, {"yPercent": 100}]
     ],
     "rarity": 4
+  },
+  {
+    "name": "オデット読書",
+    "sprites": {
+      "odette": {"path": "assets/odette_reading.png", "zIndex": 10000},
+      "butterfly1": {"path": "assets/butterfly.png", "zIndex": 10001},
+      "butterfly2": {"path": "assets/butterfly.png", "zIndex": 10002}
+    },
+    "timesheet": [
+      ["odette", 0, {"left": "50%", "top": "50%", "xPercent": -50, "yPercent": -50, "opacity": 0}],
+      ["butterfly1", 0, {"left": "25%", "top": "30%", "opacity": 0}],
+      ["butterfly2", 0, {"left": "70%", "top": "20%", "opacity": 0}],
+      ["odette", 0.5, {"opacity": 1}],
+      ["butterfly1", 0.5, {"opacity": 1}, "-=0.5"],
+      ["butterfly2", 0.5, {"opacity": 1}, "-=0.5"],
+      ["butterfly1", 0.3, {"scaleX": 0, "xPercent": -10, "yoyo": true, "repeat": 10, "ease": "Quad.easeIn"}, 0],
+      ["butterfly1", 1, {"yPercent": 20, "yoyo": true, "repeat": 2, "ease": "Quad.easeInOut"}, 0],
+      ["butterfly2", 0.3, {"scaleX": 0, "xPercent": 10, "yoyo": true, "repeat": 10, "ease": "Quad.easeIn"}, -0.3],
+      ["butterfly2", 1, {"yPercent": 20, "yoyo": true, "repeat": 2, "ease": "Quad.easeInOut"}, -0.3],
+      ["odette", 0.5, {"opacity": 0}, "-=0.25"],
+      ["butterfly1", 0.5, {"opacity": 0}, "-=0.5"],
+      ["butterfly2", 0.5, {"opacity": 0}, "-=0.5"]
+    ],
+    "rarity": 4
   }
 ]
