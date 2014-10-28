@@ -126,5 +126,33 @@
       ["benchformer", 2.5, {"left": "0", "top": "100%", "xPercent": -100, "yPercent": -60, "ease": "Quad.easeInOut"}]
     ],
     "rarity": 4
+  },
+  {
+    "name": "フィグネリア海老フライ",
+    "sprites": {
+      "figneria": {"path": "assets/figneria.png", "zIndex": 10000},
+      "tail": {"path": "assets/figneria_tail.png", "zIndex": 10001},
+      "shrimp": {"path": "assets/figneria_shrimp.png", "zIndex": 10002}
+    },
+    "timesheet": [
+      ["figneria", 0, {"left": "50%", "top": "50%", "xPercent": -50, "yPercent": -50, "opacity": 0}],
+      ["shrimp", 0, {"left": "50%", "top": "50%", "xPercent": -50, "yPercent": -50, "opacity": 0}],
+      ["tail", 0, {"left": "50%", "top": "50%", "xPercent": -50, "yPercent": -50, "opacity": 0}],
+      ["figneria", 0.5, {"opacity": 1}],
+      ["shrimp", 0.5, {"opacity": 1}, "-=0.5"],
+      ["tail", 0.5, {"opacity": 1}, "-=0.5"],
+      ["shrimp", 2, {"rotation": "-20deg", "left": "40%", "top": "85%", "transformOrigin": "30% 50%", "ease": "Quad.easeIn"}],
+      ["shrimp", 1, {"left": "45%", "top": "95%", "rotation": "40deg", "transformOrigin": "30% 50%", "ease": "Back.easeOut"}],
+      ["shrimp", 0.5, {"opacity": 0}, "-=0.5"],
+      ["tail", 0.3, {"x": -5, "ease": "Quad.easeOut"}, "+=1"],
+      ["tail", 1, {"x": 0}],
+      ["shrimp", 0, {"left": "50%", "top": "50%", "xPercent": -50, "yPercent": -50, "rotation": "0deg", "opacity": 0}, "-=1"],
+      ["shrimp", 0.5, {"opacity": 1}, "-=1"],
+
+      ["figneria", 0.5, {"opacity": 0}, "+=2"],
+      ["tail", 0.5, {"opacity": 0}, "-=0.5"],
+      ["shrimp", 0.5, {"opacity": 0}, "-=0.5"]
+    ],
+    "rarity": 4
   }
 ]
