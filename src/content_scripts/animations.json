@@ -154,5 +154,32 @@
       ["shrimp", 0.5, {"opacity": 0}, "-=0.5"]
     ],
     "rarity": 4
+  },
+  {
+    "name": "ジャンナティータイム",
+    "sprites": {
+      "gianna": {"path": "assets/gianna.png", "zIndex": 10000},
+      "pot_body": {"path": "assets/gianna_pot_body.png", "zIndex": 10011},
+      "pot_cup": {"path": "assets/gianna_pot_cup.png", "zIndex": 10010},
+      "pin": {"path": "assets/gianna_pin.png", "zIndex": 10020}
+    },
+    "timesheet": [
+      ["gianna", 0, {"left": "50%", "top": "50%", "x": -126, "y": -100, "opacity": 0}],
+      ["pot_body", 0, {"left": "50%", "top": "50%", "x": 200, "y": -103, "opacity": 0}],
+      ["pot_cup", 0, {"left": "50%", "top": "50%", "x": 200, "y": -103, "opacity": 0}],
+      ["pin", 0, {"left": "50%", "top": "50%", "x": 130, "y": -130, "opacity": 0}],
+      ["pot_body", 1, {"opacity": 1, "x": 120}],
+      ["pot_cup", 1, {"opacity": 1, "x": 120}, "-=1"],
+      ["pot_cup", 2, {"opacity": 1, "y": -80, "ease": "Quad:easeOut"}],
+      ["pin", 0.5, {"opacity": 1}, "-=2"],
+      ["pin", 1, {"scale": 1.2, "ease": "Quad:easeOut"}, "-=2"],
+      ["pin", 0.5, {"opacity": 0}, "-=0.5"],
+      ["gianna", 2, {"opacity": 1, "y": -171}, "-=2"],
+      ["pot_cup", 1, {"opacity": 1, "y": -103}],
+      ["gianna", 0.5, {"opacity": 0}, "+=2"],
+      ["pot_body", 0.5, {"x": 140, "opacity": 0}, "-=0.5"],
+      ["pot_cup", 0.5, {"x": 140, "opacity": 0}, "-=0.5"]
+    ],
+    "rarity": 4
   }
 ]
