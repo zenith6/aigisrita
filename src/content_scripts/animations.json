@@ -181,5 +181,17 @@
       ["pot_cup", 0.5, {"x": 140, "opacity": 0}, "-=0.5"]
     ],
     "rarity": 4
+  },
+  {
+    "name": "ヴィクトワールお散歩",
+    "sprites": {
+      "victoire": {"path": "assets/victoire.png", "zIndex": 10000}
+    },
+    "timesheet": [
+      ["victoire", 0, {"left": "100%", "top": "50%", "x": 0, "y": -200}],
+      ["victoire", 8, {"left": "0", "x": -400, "ease": "Linear.easeNone"}],
+      ["victoire", 1, {"y": -300, "yoyo": true, "repeat": 8, "ease": "Linear:easeInOut"}, "-=8"]
+    ],
+    "rarity": 4
   }
 ]
