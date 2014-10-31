@@ -23,6 +23,7 @@
  * [千年戦争アイギス1292年目>>710](http://kilauea.bbspink.com/test/read.cgi/mobpink/1412817075/710)さん
  * [千年戦争アイギス716年目>>306](http://kilauea.bbspink.com/test/read.cgi/mobpink/1403185132/306)さん
  * [千年戦争アイギス926年目>>617](http://kilauea.bbspink.com/test/read.cgi/mobpink/1406703025/617)さん
+ * [千年戦争アイギス632年目>>238](http://kilauea.bbspink.com/test/read.cgi/mobpink/1402235820/238)さん
 
 [千年戦争アイギス](http://www.dmm.com/netgame_s/aigisc/) は 株式会社DMM.comラボ の登録商標です。
 ソースコードのライセンスは MIT License です。
