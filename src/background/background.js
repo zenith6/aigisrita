@@ -184,7 +184,7 @@ function stop() {
     });
 
     chrome.idle.onStateChanged.addListener(function (newState) {
-      if (window.settings.away) {
+      if (window.settings.active && window.settings.away) {
         switch (newState) {
           case 'active':
             stop();
