@@ -193,5 +193,29 @@
       ["victoire", 1, {"y": -300, "yoyo": true, "repeat": 8, "ease": "Linear:easeInOut"}, "-=8"]
     ],
     "rarity": 4
+  },
+  {
+    "name": "エイダ左からチラ",
+    "sprites": {
+      "ada": {"path": "assets/ada.png", "zIndex": 10000}
+    },
+    "timesheet": [
+      ["ada", 0, {"left": 0, "top": "50%", "height": "100%", "xPercent": -100, "yPercent": -50, "rotationY": 180}],
+      ["ada", 6, {"xPercent": 0, "ease": "Quad.easeInOut"}],
+      ["ada", 6, {"xPercent": -100, "ease": "Quad.easeInOut", "delay": 4}]
+    ],
+    "rarity": 4
+  },
+  {
+    "name": "エイダ右からチラ",
+    "sprites": {
+      "ada": {"path": "assets/ada.png", "zIndex": 10000}
+    },
+    "timesheet": [
+      ["ada", 0, {"right": 0, "top": "50%", "height": "100%", "xPercent": 100, "yPercent": -50}],
+      ["ada", 6, {"xPercent": 0, "ease": "Quad.easeInOut"}],
+      ["ada", 6, {"xPercent": 100, "ease": "Quad.easeInOut", "delay": 4}]
+    ],
+    "rarity": 4
   }
 ]
