@@ -217,5 +217,17 @@
       ["ada", 6, {"xPercent": 100, "ease": "Quad.easeInOut", "delay": 4}]
     ],
     "rarity": 4
+  },
+  {
+    "name": "邪神むしゃむしゃ",
+    "sprites": {
+      "ada": {"path": "assets/aegis.png", "zIndex": 10000}
+    },
+    "timesheet": [
+      ["ada", 0, {"left": "50%", "bottom": "0%", "xPercent": -50, "yPercent": 100}],
+      ["ada", 6, {"yPercent": 0, "ease": "Quad.easeInOut"}],
+      ["ada", 6, {"yPercent": 100, "ease": "Quad.easeInOut", "delay": 4}]
+    ],
+    "rarity": 4
   }
 ]
