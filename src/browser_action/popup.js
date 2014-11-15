@@ -26,6 +26,7 @@ $(function () {
   $('[name=active]').val([0 + settings.active]);
   $('[name=away]').prop('checked', settings.away);
   $('[name=averaging]').prop('checked', settings.averaging);
+  $awayInterval.val(settings.awayInterval);
 
   $('[name=active]').change(function () {
     var active = !!parseInt(this.value);
