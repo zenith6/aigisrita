@@ -1,6 +1,12 @@
 $(function () {
   'use strict';
 
+  function toggleActiveForm(duration) {
+    duration = duration !== undefined ? duration : 400;
+    var active = !!parseInt($('[name=active]:checked').val());
+    $('[data-show="active"]')[active ? 'show' : 'hide'](duration);
+  }
+
   var bg = chrome.extension.getBackgroundPage();
   var settings = bg.settings;
 
@@ -21,13 +27,10 @@ $(function () {
   $('[name=away]').prop('checked', settings.away);
   $('[name=averaging]').prop('checked', settings.averaging);
 
-  $awayInterval.val(settings.awayInterval).parent().toggle(settings.active);
-
   $('[name=active]').change(function () {
     var active = !!parseInt(this.value);
     chrome.storage.local.set({active: active});
-
-    $awayInterval.parent().toggle(this.value);
+    toggleActiveForm();
   });
 
   $('[name=away]').change(function () {
@@ -41,4 +44,6 @@ $(function () {
   $awayInterval.change(function () {
     chrome.storage.local.set({awayInterval: parseInt($(this).val())});
   });
+
+  toggleActiveForm(0);
 });
