@@ -45,5 +45,40 @@ $(function () {
     chrome.storage.local.set({awayInterval: parseInt($(this).val())});
   });
 
+  var animations = bg.getAllAnimations();
+  var $list = $('#animationList');
+  var onChange = function () {
+    var animations = bg.settings.disabledAnimations;
+    var selectedId = this.value;
+    var disabled = !this.checked;
+
+    if (disabled) {
+      if (animations.indexOf(selectedId) === -1) {
+        animations.push(selectedId);
+      }
+    } else {
+      var index = animations.indexOf(selectedId);
+      if (index !== -1) {
+        animations.splice(index, 1);
+      }
+    }
+
+    chrome.storage.local.set({disabledAnimations: animations});
+  };
+
+  animations.forEach(function (animation) {
+    var checked = settings.disabledAnimations.indexOf(animation.id) == -1;
+    $('<li />')
+      .append($('<label />')
+        .append($('<input type="checkbox" name="animation" />')
+          .val(animation.id)
+          .prop('checked', checked)
+          .change(onChange)
+        ).append($('<span class="name" />').text(animation.name))
+        .append($('<a class="author" target="_blank" />').text(animation.author.name).attr('href', animation.author.homepage))
+        .append($('<span class="rarity" />').text(animation.rarity))
+      ).appendTo($list);
+  });
+
   toggleActiveForm(0);
 });

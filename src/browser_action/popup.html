@@ -16,8 +16,17 @@
       <select name="awayInterval"></select> 放置した時だけ</label>
     </div>
     <div data-show="active">
-      <label><input type="checkbox" name="averaging" value="1" /> 出現確率を平均化にする</label>
+      <label><input type="checkbox" name="averaging" value="1" /> 出現確率を均等にする</label>
     </div>
+
+    <fieldset data-show="active">
+      <legend>
+        出現キャラ
+        <span title="謎の数値" class="rarity">出現確率</span>
+        <span title="イラストの作者、もしくは確認可能な最初の出典です" class="author">作者</span>
+      </legend>
+      <ul id="animationList" class="animation-list"></ul>
+    </fieldset>
 
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="popup.js"></script>

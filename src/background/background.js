@@ -29,6 +29,14 @@ function getWhiteList() {
   return whiteListCache;
 }
 
+function getAllAnimations() {
+  var request = new XMLHttpRequest();
+  request.open('GET', chrome.extension.getURL('content_scripts/animations.json'), false);
+  request.send();
+
+  return JSON.parse(request.responseText);
+}
+
 /**
  * @type Array
  */
@@ -36,11 +44,9 @@ var animations;
 
 function getAnimations() {
   if (!animations) {
-    var request = new XMLHttpRequest();
-    request.open('GET', chrome.extension.getURL('content_scripts/animations.json'), false);
-    request.send();
-
-    animations = JSON.parse(request.responseText);
+    animations = getAllAnimations().filter(function (animation) {
+      return settings.disabledAnimations.indexOf(animation.id) === -1;
+    });
 
     var total = animations.reduce(function (rarity, animation) {
       animation.rarity = (window.settings.averaging ? 1 : animation.rarity);
@@ -109,12 +115,15 @@ function stop() {
 (function () {
   'use strict';
 
-  chrome.storage.local.get({
+  var defaultSettings = {
     active: true,
     away: false,
     awayInterval: 15,
-    averaging: false
-  }, function (settings) {
+    averaging: false,
+    disabledAnimations: []
+  };
+
+  chrome.storage.local.get(defaultSettings, function (settings) {
     window.settings = settings;
     initialize();
   });
@@ -136,9 +145,14 @@ function stop() {
       switch (message.action) {
         case 'onInitialized':
         case 'onAnimationCompleted':
+          var animation = getNextAnimation();
+          if (!animation) {
+            return;
+          }
+
           chrome.tabs.sendMessage(sender.tab.id, {
             action: 'prepare',
-            animation: getNextAnimation()
+            animation: animation
           }, function () {
             if (!window.settings.away) {
               chrome.tabs.sendMessage(sender.tab.id, {
@@ -177,6 +191,7 @@ function stop() {
             break;
 
           case 'averaging':
+          case 'disabledAnimations':
             animations = undefined;
             break;
         }

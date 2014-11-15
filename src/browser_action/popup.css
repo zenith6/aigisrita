@@ -1,7 +1,49 @@
 body {
-  width: 240px;
+  width: 20rem;
+  -webkit-user-select: none;
 }
 
 label {
   line-height: 2rem;
+}
+
+.rarity {
+  color: #888;
+}
+
+.rarity:before {
+  content: "(";
+}
+
+.rarity:after {
+  content: ")";
+}
+
+.animation-list {
+  display: block;
+  padding: 0;
+  margin: 0;
+  height: 16rem;
+  overflow-y: scroll;
+}
+
+.animation-list li {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+.animation-list input[type=checkbox]:not(:checked) + span {
+  color: #888;
+  text-decoration: line-through;
+}
+
+.animation-list span + *,
+.animation-list .rarity:before {
+  margin-left: 0.8em;
+}
+
+.animation-list .author {
+  float: right;
+  margin-right: 1em;
 }

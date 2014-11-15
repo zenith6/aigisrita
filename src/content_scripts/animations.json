@@ -1,5 +1,6 @@
 [
   {
+    "id": "rita_left",
     "name": "リタ左からチラ",
     "sprites": {
       "rita": {"path": "assets/rita.png", "zIndex": 10000}
@@ -9,9 +10,14 @@
       ["rita", 6, {"xPercent": 0, "ease": "Quad.easeInOut"}],
       ["rita", 6, {"xPercent": -100, "ease": "Quad.easeInOut", "delay": 4}]
     ],
-    "rarity": 98
+    "rarity": 98,
+    "author": {
+      "name": "1292年目>>710",
+      "homepage": "http://kilauea.bbspink.com/test/read.cgi/mobpink/1412817075/710"
+    }
   },
   {
+    "id": "rita_right",
     "name": "リタ右からチラ",
     "sprites": {
       "rita": {"path": "assets/rita.png", "zIndex": 10000}
@@ -21,9 +27,14 @@
       ["rita", 6, {"xPercent": 0, "ease": "Quad.easeInOut"}],
       ["rita", 6, {"xPercent": 100, "ease": "Quad.easeInOut", "delay": 4}]
     ],
-    "rarity": 98
+    "rarity": 98,
+    "author": {
+      "name": "1292年目>>710",
+      "homepage": "http://kilauea.bbspink.com/test/read.cgi/mobpink/1412817075/710"
+    }
   },
   {
+    "id": "mikoto_sprit",
     "name": "ミコトの霊",
     "sprites": {
       "mikoto": {"path": "assets/mikoto.png", "zIndex": 10001},
@@ -42,9 +53,14 @@
       ["bg", 2, {"width": "100%", "height": "100%", "left": "0%", "top": "0%", "opacity": 0.7}, 0],
       ["bg", 2, {"width": "100%", "height": "100%", "left": "0%", "top": "0%", "opacity": 0}, "-=2"]
     ],
-    "rarity": 4
+    "rarity": 4,
+    "author": {
+      "name": "622年目>>353",
+      "homepage": "http://kilauea.bbspink.com/test/read.cgi/mobpink/1402073611/353"
+    }
   },
   {
+    "id": "monika_right",
     "name": "モニカ右からちら",
     "sprites": {
       "monika": {"path": "assets/monika.png", "zIndex": 10000}
@@ -54,9 +70,14 @@
       ["monika", 6, {"xPercent": 0, "ease": "Quad.easeInOut"}],
       ["monika", 6, {"xPercent": 100, "ease": "Quad.easeInOut", "delay": 4}]
     ],
-    "rarity": 4
+    "rarity": 4,
+    "author": {
+      "name": "ぴよぴーよ",
+      "homepage": "http://www.pixiv.net/member.php?id=248654"
+    }
   },
   {
+    "id": "cipria_combine",
     "name": "シプリア合成",
     "sprites": {
       "cipria_base": {"path": "assets/cipria_base.png", "zIndex": 10000},
@@ -70,9 +91,14 @@
       ["cipria_base", 6, {"opacity": 0, "ease": "Quad.easeIn"}],
       ["cipria_sprit", 6, {"top": "-60%", "opacity": 0, "ease": "Quad.easeInOut"}, "-=6"]
     ],
-    "rarity": 4
+    "rarity": 4,
+    "author": {
+      "name": "犬太",
+      "homepage": "http://www.pixiv.net/member.php?id=1157165"
+    }
   },
   {
+    "id": "carrie_gata",
     "name": "キャリーガタッ",
     "sprites": {
       "standup": {"path": "assets/carrie_standup.png", "zIndex": 10000},
@@ -90,9 +116,14 @@
       ["sitdown", 0.6, {"opacity": 1}, "-=0.6"],
       ["sitdown", 6, {"yPercent": 100}]
     ],
-    "rarity": 4
+    "rarity": 4,
+    "author": {
+      "name": "ぴよぴーよ",
+      "homepage": "http://www.pixiv.net/member.php?id=248654"
+    }
   },
   {
+    "id": "odette_reading",
     "name": "オデット読書",
     "sprites": {
       "odette": {"path": "assets/odette_reading.png", "zIndex": 10000},
@@ -114,9 +145,14 @@
       ["butterfly1", 0.5, {"opacity": 0}, "-=0.5"],
       ["butterfly2", 0.5, {"opacity": 0}, "-=0.5"]
     ],
-    "rarity": 4
+    "rarity": 4,
+    "author": {
+      "name": "549年目>>565",
+      "homepage": "http://kilauea.bbspink.com/test/read.cgi/mobpink/1401058289/565"
+    }
   },
   {
+    "id": "sybilla_benchformer",
     "name": "シビラベンチフォーマー",
     "sprites": {
       "benchformer": {"path": "assets/benchformer.png", "zIndex": 10000}
@@ -125,9 +161,14 @@
       ["benchformer", 0, {"right": "0", "top": "0", "xPercent": 100, "yPercent": -40}],
       ["benchformer", 2.5, {"left": "0", "top": "100%", "xPercent": -100, "yPercent": -60, "ease": "Quad.easeInOut"}]
     ],
-    "rarity": 4
+    "rarity": 4,
+    "author": {
+      "name": "431年目>>954",
+      "homepage": "http://kilauea.bbspink.com/test/read.cgi/mobpink/1397905271/954"
+    }
   },
   {
+    "id": "figneria_shrimp",
     "name": "フィグネリア海老フライ",
     "sprites": {
       "figneria": {"path": "assets/figneria.png", "zIndex": 10000},
@@ -153,9 +194,14 @@
       ["tail", 0.5, {"opacity": 0}, "-=0.5"],
       ["shrimp", 0.5, {"opacity": 0}, "-=0.5"]
     ],
-    "rarity": 4
+    "rarity": 4,
+    "author": {
+      "name": "716年目>>306",
+      "homepage": "http://kilauea.bbspink.com/test/read.cgi/mobpink/1403185132/306"
+    }
   },
   {
+    "id": "gianna_teatime",
     "name": "ジャンナティータイム",
     "sprites": {
       "gianna": {"path": "assets/gianna.png", "zIndex": 10000},
@@ -180,9 +226,14 @@
       ["pot_body", 0.5, {"x": 140, "opacity": 0}, "-=0.5"],
       ["pot_cup", 0.5, {"x": 140, "opacity": 0}, "-=0.5"]
     ],
-    "rarity": 4
+    "rarity": 4,
+    "author": {
+      "name": "926年目>>617",
+      "homepage": "http://kilauea.bbspink.com/test/read.cgi/mobpink/1406703025/617"
+    }
   },
   {
+    "id": "victoire_walk",
     "name": "ヴィクトワールお散歩",
     "sprites": {
       "victoire": {"path": "assets/victoire.png", "zIndex": 10000}
@@ -192,9 +243,14 @@
       ["victoire", 8, {"left": "0", "x": -400, "ease": "Linear.easeNone"}],
       ["victoire", 1, {"y": -300, "yoyo": true, "repeat": 8, "ease": "Linear:easeInOut"}, "-=8"]
     ],
-    "rarity": 4
+    "rarity": 4,
+    "author": {
+      "name": "632年目>>238",
+      "homepage": "http://kilauea.bbspink.com/test/read.cgi/mobpink/1402235820/238"
+    }
   },
   {
+    "id": "ada_left",
     "name": "エイダ左からチラ",
     "sprites": {
       "ada": {"path": "assets/ada.png", "zIndex": 10000}
@@ -204,9 +260,14 @@
       ["ada", 6, {"xPercent": 0, "ease": "Quad.easeInOut"}],
       ["ada", 6, {"xPercent": -100, "ease": "Quad.easeInOut", "delay": 4}]
     ],
-    "rarity": 4
+    "rarity": 4,
+    "author": {
+      "name": "636年目>>731",
+      "homepage": "http://kilauea.bbspink.com/test/read.cgi/mobpink/1402309037/731"
+    }
   },
   {
+    "id": "ada_right",
     "name": "エイダ右からチラ",
     "sprites": {
       "ada": {"path": "assets/ada.png", "zIndex": 10000}
@@ -216,9 +277,14 @@
       ["ada", 6, {"xPercent": 0, "ease": "Quad.easeInOut"}],
       ["ada", 6, {"xPercent": 100, "ease": "Quad.easeInOut", "delay": 4}]
     ],
-    "rarity": 4
+    "rarity": 4,
+    "author": {
+      "name": "636年目>>731",
+      "homepage": "http://kilauea.bbspink.com/test/read.cgi/mobpink/1402309037/731"
+    }
   },
   {
+    "id": "aegis_eat",
     "name": "邪神むしゃむしゃ",
     "sprites": {
       "ada": {"path": "assets/aegis.png", "zIndex": 10000}
@@ -228,6 +294,10 @@
       ["ada", 6, {"yPercent": 0, "ease": "Quad.easeInOut"}],
       ["ada", 6, {"yPercent": 100, "ease": "Quad.easeInOut", "delay": 4}]
     ],
-    "rarity": 4
+    "rarity": 4,
+    "author": {
+      "name": "？",
+      "homepage": null
+    }
   }
 ]
